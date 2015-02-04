@@ -11,7 +11,9 @@ namespace EntropiaNaPratica
         static void Main(string[] args)
         {
             GerarArquivo gera = new GerarArquivo();
-            gera.CompletarAleatorio();
+            gera.ArquivoAleatorio();
+            gera.ArquivoAleatorioRestrito();
+            gera.ArquivoNaoAleatorio();
             Console.ReadKey();
 
         }
