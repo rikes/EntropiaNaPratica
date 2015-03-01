@@ -12,15 +12,15 @@ namespace EntropiaNaPratica
     {
         private int mega = (int)Math.Pow(2, 20);
         private Random rand = new Random();
-        private Stopwatch stopWatch = new Stopwatch();
-        private TimeSpan ts;
+        private Stopwatch stopWatch = new Stopwatch();        
         private long temp = 0;
         
         public void ArquivoAleatorio()
         {
 
-            //Recebe valores inteiros de 0 a 255                       
+            //Reserva 10mb em um array de bytes                                    
             byte[] unsChar = new byte[mega * 10];
+            //Prenche o vetor com valores de 0 a 255
             rand.NextBytes(unsChar);
             using (BinaryWriter writer = new BinaryWriter(File.Open("arquivoAleatorio.txt", FileMode.Create)))
             {
@@ -28,7 +28,6 @@ namespace EntropiaNaPratica
                 //poderia usar GetUpperBound(0) na iteração
                 for (int i = 0; i < unsChar.Length; i++)
                 {
-                    //Console.WriteLine("{0}: {1}", i, unsChar[i]);
                     writer.Write(unsChar[i]);
                 }
                 stopWatch.Stop();
@@ -38,17 +37,16 @@ namespace EntropiaNaPratica
             }
         }
         public void ArquivoAleatorioRestrito()
-        {
-            //Recebe valores inteiros de 0 a 255                       
-            byte[] unsChar = new byte[mega * 10];
-            rand.NextBytes(unsChar);
+        {                      
+            byte[] unsChar = new byte[mega*10];
             using (BinaryWriter writer = new BinaryWriter(File.Open("arquivoAleartorioRestrito.txt", FileMode.Create)))
             {
                 stopWatch.Start();
                 //poderia usar GetUpperBound(0) na iteração
                 for (int i = 0; i < unsChar.Length; i++)
                 {
-                    //Console.WriteLine("{0}: {1}", i, range);
+                    unsChar[i] = (byte)rand.Next(0, 26);
+                    //Console.WriteLine(unsChar[i]);
                     writer.Write(unsChar[i]);
                 }
                 stopWatch.Stop();
@@ -59,31 +57,29 @@ namespace EntropiaNaPratica
         }
         public void ArquivoNaoAleatorio()
         {   
-               //Recebe valores inteiros de 0 a 255                       
             byte[] unsChar = new byte[mega*10];
-            rand.NextBytes(unsChar);
             using (BinaryWriter writer = new BinaryWriter(File.Open("arquivoNaoAlearto.txt", FileMode.Create)))
             {
                 stopWatch.Start();
                 //poderia usar GetUpperBound(0) na iteração
+                
                 for (int i = 0; i < unsChar.Length; i++)
                 {
-                    //50% de chance de aparecer
-                    if (unsChar[i] < 125)
+                    unsChar[i] = (byte)rand.Next(1, 12);
+                    //50% de chance de aparecer (primos)
+                    if (EhPrimo(unsChar[i]))
                     {
                         writer.Write(unsChar[i]);
                     }
-                    //20% de chance de aparecer
-                    if (unsChar[i] >= 125 && unsChar[i] <= 175)
+                    //40% de chance de aparecer, pares não primos
+                    else if (unsChar[i] % 2 == 0)
                     {
                         writer.Write(unsChar[i]);
                     }
-                    //30% de chance de aparecer
-                    if (unsChar[i] > 175 )
-                    {
+                    //10% de chance de aparecer.. 9!
+                    else if(unsChar[i] == unsChar[i]) {
                         writer.Write(unsChar[i]);
                     }
-                    
                 }
                 stopWatch.Stop();
                 temp = stopWatch.ElapsedMilliseconds;

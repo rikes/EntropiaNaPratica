@@ -14,6 +14,7 @@ namespace EntropiaNaPratica
             gera.ArquivoAleatorio();
             gera.ArquivoAleatorioRestrito();
             gera.ArquivoNaoAleatorio();
+            //Console.WriteLine(DateTime.Now.ToShortTimeString());
             Console.ReadKey();
 
         }
