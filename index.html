@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <meta name="description" content="Entropia na pratica : Software para testes de um trabalho sobre entropia e compressão, da disciplina de multimídia do professor Flávio. ">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Entropia na pratica by rikes</title>
+    <title>Entropia na pratica</title>
   </head>
 
   <body>
-    <header>
-      <div class="inner">
-        <h1>Entropia na pratica</h1>
-        <h2>Software para testes de um trabalho sobre entropia e compressão, da disciplina de multimídia do professor Flávio. </h2>
-        <a href="https://github.com/rikes/EntropiaNaPratica" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <p><img src="http://www.bookofentropia.com/wp-content/uploads/2013/06/cropped-Entropia-Map-Header11.jpg" alt="Entropia Imagem">
-[<img src="http://www.bookofentropia.com/wp-content/uploads/2013/06/cropped-Entropia-Map-Header11.jpg" alt="IMAGE ALT TEXT HERE">]</p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/rikes/EntropiaNaPratica">View on GitHub</a>
+
+          <h1 id="project_title">Entropia na pratica</h1>
+          <h2 id="project_tagline">Software para testes de um trabalho sobre entropia e compressão, da disciplina de multimídia do professor Flávio. </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/rikes/EntropiaNaPratica/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/rikes/EntropiaNaPratica/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><img src="http://www.bookofentropia.com/wp-content/uploads/2013/06/cropped-Entropia-Map-Header11.jpg" alt="Entropia Imagem"></p>
 
 <h3>
 <a id="segunda-atividade-entropia-na-pratica" class="anchor" href="#segunda-atividade-entropia-na-pratica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Segunda atividade, entropia na pratica.</h3>
@@ -38,47 +40,40 @@
 
 <hr>
 
-<div class="highlight highlight-java"><pre>      <span class="pl-s">public</span> <span class="pl-st">void</span> ArquivoAleatorioRestrito()
+<div class="highlight highlight-C#"><pre>      <span class="pl-s">public</span> <span class="pl-st">void</span> ArquivoAleatorioRestrito()
         {
             <span class="pl-c">//Recebe valores inteiros de 0 a 255                       </span>
-            <span class="pl-st">byte</span>[] unsChar <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">byte</span>[mega <span class="pl-k">*</span> <span class="pl-c1">10</span>];
-            <span class="pl-stj">rand<span class="pl-k">.</span>NextBytes</span>(unsChar);
-            using (<span class="pl-stj">BinaryWriter</span> writer <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">BinaryWriter</span>(<span class="pl-stj">File</span><span class="pl-k">.</span>Open(<span class="pl-s1"><span class="pl-pds">"</span>arquivoAleartorioRestrito.txt<span class="pl-pds">"</span></span>, <span class="pl-stj">FileMode</span><span class="pl-k">.</span><span class="pl-stj">Create</span>)))
+            <span class="pl-st">byte</span>[] unsChar = <span class="pl-s">new</span> <span class="pl-st">byte</span>[mega * <span class="pl-c1">10</span>];
+            rand.NextBytes(unsChar);
+            <span class="pl-k">using</span> (BinaryWriter writer = <span class="pl-s">new</span> BinaryWriter(File.Open(<span class="pl-s1"><span class="pl-pds">"</span>arquivoAleartorioRestrito.txt<span class="pl-pds">"</span></span>, FileMode.Create)))
             {
-                <span class="pl-stj">stopWatch<span class="pl-k">.</span>Start</span>();
+                stopWatch.Start();
                 <span class="pl-c">//poderia usar GetUpperBound(0) na iteração</span>
-                <span class="pl-k">for</span> (<span class="pl-st">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-stj">unsChar<span class="pl-k">.</span>Length</span>; i<span class="pl-k">++</span>)
+                <span class="pl-k">for</span> (<span class="pl-st">int</span> i = <span class="pl-c1">0</span>; i &lt; unsChar.Length; i++)
                 {
                     <span class="pl-c">//Console.WriteLine("{0}: {1}", i, range);</span>
-                    <span class="pl-stj">writer<span class="pl-k">.</span>Write</span>(unsChar[i]);
+                    writer.Write(unsChar[i]);
                 }
-                <span class="pl-stj">stopWatch<span class="pl-k">.</span>Stop</span>();
-                temp <span class="pl-k">=</span> <span class="pl-stj">stopWatch<span class="pl-k">.</span>ElapsedMilliseconds</span>;
-                <span class="pl-stj">Console</span><span class="pl-k">.</span>WriteLine(<span class="pl-s1"><span class="pl-pds">"</span>Fim <span class="pl-cce">\n</span>Tempo de Execução {0} Milisegundos<span class="pl-pds">"</span></span>, temp);
-                <span class="pl-stj">stopWatch<span class="pl-k">.</span>Reset</span>();
+                stopWatch.Stop();
+                temp = stopWatch.ElapsedMilliseconds;
+                Console.WriteLine(<span class="pl-s1"><span class="pl-pds">"</span>Fim <span class="pl-cce">\n</span>Tempo de Execução {0} Milisegundos<span class="pl-pds">"</span></span>, temp);
+                stopWatch.Reset();
             }
         }</pre></div>
 
 <hr>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/rikes/EntropiaNaPratica/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/rikes/EntropiaNaPratica/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/rikes/EntropiaNaPratica"></a> is maintained by <a href="https://github.com/rikes">rikes</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
 
-  
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Entropia na pratica maintained by <a href="https://github.com/rikes">rikes</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
