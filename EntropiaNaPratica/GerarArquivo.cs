@@ -17,8 +17,7 @@ namespace EntropiaNaPratica
         
         public void ArquivoAleatorio()
         {
-
-            //Reserva 10mb em um array de bytes                                    
+            //Reserva 10mb em um array de bytes.                                    
             byte[] unsChar = new byte[mega * 10];
             //Prenche o vetor com valores de 0 a 255
             rand.NextBytes(unsChar);
