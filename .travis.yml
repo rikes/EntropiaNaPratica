@@ -1,9 +1,7 @@
-language: java
+language: csharp
 
-jdk:
- - oraclejdk8 
- - oraclejdk7
- 
+solution: EntropiaNaPratica.sln
+
 branches:
   only:
     - master
